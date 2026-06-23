@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2E1065">
+<title>Au Sommet des Montagnes — Conférence des Femmes Leaders d'Afrique · 18-20 août 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Violet profond (hero / bandes sombres) */
+    --void: #1E0B3E;
+    --deep: #2E1065;
+    --deep-2: #3B1A7A;
+    --royal: #5B2BA8;
+    --violet-soft: #7B3FC4;
+    /* Doré métallique (accent signature) */
+    --gold: #D4AF37;
+    --gold-bright: #F0CE5B;
+    --gold-deep: #A9842B;
+    /* Crème (bandes claires) */
+    --cream: #FAF6EC;
+    --cream-2: #F4EEDD;
+    /* Encre (texte sur crème) */
+    --ink: #2A1A4A;
+    --ink-soft: #5C4E76;
+    --ink-faint: #8A7CA5;
+    /* Texte sur violet */
+    --on-deep: #F3EEFA;
+    --on-deep-soft: #C9BBE3;
+    --on-deep-faint: #9583BC;
+
+    --grad-hero: linear-gradient(165deg, #2E1065 0%, #3B1A7A 45%, #5B2BA8 100%);
+    --grad-gold: linear-gradient(135deg, #F7DC74 0%, #D4AF37 48%, #A9842B 100%);
+    --hair-light: rgba(212,175,55,0.24);
+    --hair-dark: rgba(42,26,74,0.12);
+    --shadow-cream: 0 16px 44px rgba(42,16,80,0.10);
+    --shadow-deep: 0 24px 60px rgba(15,5,40,0.45);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    color-scheme: dark;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--deep);
+    color: var(--on-deep);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+  }
+  ::selection { background: var(--gold); color: var(--deep); }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 0.72rem;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--gold-deep);
+    display: inline-flex; align-items: center; gap: 0.8em;
+  }
+  .eyebrow.on-deep { color: var(--gold); }
+  .eyebrow.centered { justify-content: center; }
+  .eyebrow::before, .eyebrow.centered::after {
+    content: ""; width: 28px; height: 1px; background: currentColor; opacity: 0.6;
+  }
+  .eyebrow.centered::after { content: ""; }
+  .eyebrow:not(.centered)::after { display: none; }
+
+  /* dotted accent (les 4 points du PDF) */
+  .dots { display: inline-flex; gap: 7px; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; display: block; }
+  .dots i:nth-child(1){ background:#B9A4E0; } .dots i:nth-child(2){ background:var(--gold-deep); }
+  .dots i:nth-child(3){ background:#6BBfA6; } .dots i:nth-child(4){ background:var(--violet-soft); }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    transition: background .4s var(--ease), backdrop-filter .4s var(--ease), border-color .4s var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+  header.nav.scrolled {
+    background: rgba(30,11,62,0.85); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hair-light);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-mark { width: 42px; height: 42px; flex-shrink: 0; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.06; }
+  .brand-text b { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.12rem; color: var(--gold-bright); letter-spacing: 0.02em; }
+  .brand-text span { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-deep-faint); }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a { font-size: 0.84rem; font-weight: 500; color: var(--on-deep-soft); transition: color .2s; }
+  .nav-links a:hover { color: var(--on-deep); }
+  .nav-links a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
+
+  .lang {
+    display: inline-flex; border: 1px solid var(--hair-light); border-radius: 100px; overflow: hidden;
+  }
+  .lang button {
+    font-family: 'Inter'; font-weight: 600; font-size: 0.74rem; letter-spacing: 0.06em;
+    padding: 7px 13px; background: transparent; color: var(--on-deep-soft); border: none; cursor: pointer;
+    transition: background .2s, color .2s; touch-action: manipulation;
+  }
+  .lang button[aria-pressed="true"] { background: var(--grad-gold); color: var(--deep); }
+  .lang button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .btn {
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; line-height: 1;
+    padding: 13px 24px; border-radius: 100px; cursor: pointer; border: none;
+    background: var(--grad-gold); color: var(--deep);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+    box-shadow: 0 6px 22px rgba(169,132,43,0.30); touch-action: manipulation;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(169,132,43,0.45); }
+  .btn:focus-visible { outline: 2px solid var(--on-deep); outline-offset: 3px; }
+  .btn-ghost {
+    background: transparent; color: var(--on-deep); border: 1px solid var(--hair-light); box-shadow: none;
+  }
+  .btn-ghost:hover { border-color: var(--gold); background: rgba(212,175,55,0.08); box-shadow: none; }
+  .btn-ghost.on-cream { color: var(--ink); border-color: var(--hair-dark); }
+  .btn-ghost.on-cream:hover { border-color: var(--gold-deep); background: rgba(169,132,43,0.08); }
+
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--on-deep); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative; min-height: 100svh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    padding: 120px 0 0; overflow: hidden; background: var(--grad-hero);
+  }
+  .hero-glow {
+    position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+    width: 80%; height: 60%; z-index: 0;
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.16) 0%, rgba(212,175,55,0) 65%);
+    opacity: 0; animation: glowin 2s var(--ease) .3s forwards;
+  }
+  @keyframes glowin { to { opacity: 1; } }
+  .hero-content { position: relative; z-index: 3; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-bottom: 40px; }
+
+  .hero-logo { width: 96px; height: 96px; margin-bottom: 28px; opacity: 0; animation: rise .9s var(--ease) .1s forwards; }
+  .hero-sup { margin-bottom: 14px; opacity: 0; animation: rise .9s var(--ease) .25s forwards; }
+  .hero-sup .eyebrow { font-size: 0.78rem; }
+  .hero-dots { margin: 16px 0 30px; opacity: 0; animation: rise .9s var(--ease) .4s forwards; }
+
+  .hero h1 { margin-bottom: 26px; }
+  .hero h1 .l1, .hero h1 .l2 { display: block; overflow: hidden; }
+  .hero h1 .l1 span, .hero h1 .l2 span {
+    display: block; font-family: 'Fraunces', serif; line-height: 0.96;
+    opacity: 0; transform: translateY(100%); animation: rise 1s var(--ease) forwards;
+  }
+  .hero h1 .l1 span {
+    font-weight: 500; font-style: italic; font-size: clamp(2.1rem, 7vw, 5rem);
+    color: var(--gold-bright); animation-delay: .5s;
+  }
+  .hero h1 .l2 span {
+    font-weight: 700; font-size: clamp(2.5rem, 9.5vw, 7rem); letter-spacing: -0.01em;
+    color: var(--on-deep); margin-top: 2px; animation-delay: .62s;
+  }
+  .hero-verse {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+    font-size: clamp(1rem, 2vw, 1.22rem); color: var(--on-deep-soft);
+    max-width: 620px; margin: 0 auto; line-height: 1.55;
+    opacity: 0; animation: rise .9s var(--ease) .8s forwards;
+  }
+  .hero-verse cite {
+    display: block; font-family: 'Inter'; font-style: normal; font-weight: 600;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-deep); margin-top: 14px;
+  }
+
+  .hero-stats {
+    display: flex; align-items: center; justify-content: center; gap: clamp(28px, 6vw, 72px);
+    margin-top: 48px; padding: 28px 40px; border: 1px solid var(--hair-light); border-radius: 18px;
+    background: rgba(255,255,255,0.03);
+    opacity: 0; animation: rise .9s var(--ease) 1s forwards;
+  }
+  .stat { text-align: center; }
+  .stat b { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.7rem); color: var(--gold-bright); display: block; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-deep-faint); margin-top: 8px; display: block; }
+  .stat-sep { width: 1px; height: 42px; background: var(--hair-light); }
+
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; justify-content: center;
+    margin-top: 30px; opacity: 0; animation: rise .9s var(--ease) 1.12s forwards;
+  }
+  .hero-meta .date { font-family:'Fraunces'; font-weight: 600; font-size: 1.15rem; color: var(--on-deep); }
+  .hero-meta .place { color: var(--on-deep-soft); font-size: 0.95rem; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 13px; justify-content: center; margin-top: 34px; opacity: 0; animation: rise .9s var(--ease) 1.24s forwards; }
+
+  /* countdown */
+  .countdown { display: flex; gap: 10px; justify-content: center; margin-top: 38px; opacity: 0; animation: rise .9s var(--ease) 1.34s forwards; }
+  .cd-unit { text-align: center; min-width: 58px; }
+  .cd-num { font-family:'Fraunces'; font-weight: 700; font-size: clamp(1.5rem, 3.4vw, 2.1rem); font-variant-numeric: tabular-nums; line-height: 1; color: var(--on-deep); }
+  .cd-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-deep-faint); margin-top: 7px; }
+  .cd-sep { width: 1px; background: var(--hair-light); align-self: stretch; }
+
+  /* montagne signature (silhouette enneigée du PDF) */
+  .mountains { position: relative; z-index: 1; width: 100%; line-height: 0; margin-top: 30px; }
+  .mountains svg { width: 100%; height: auto; display: block; }
+
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  /* ---------- BANDES ---------- */
+  .band { padding: 112px 0; position: relative; }
+  .band-cream { background: var(--cream); color: var(--ink); }
+  .band-cream-2 { background: var(--cream-2); color: var(--ink); }
+  .band-deep { background: var(--deep); color: var(--on-deep); }
+  .band-deep-grad { background: var(--grad-hero); color: var(--on-deep); }
+
+  .sec-head { max-width: 680px; margin-bottom: 60px; }
+  .sec-head.centered { margin-inline: auto; text-align: center; }
+  .sec-head h2 { font-family:'Fraunces'; font-weight: 700; font-size: clamp(2.1rem, 5vw, 3.4rem); margin-top: 16px; line-height: 1.04; }
+  .band-cream .sec-head h2, .band-cream-2 .sec-head h2 { color: var(--ink); }
+  .sec-head p { font-size: 1.06rem; margin-top: 18px; }
+  .band-cream .sec-head p, .band-cream-2 .sec-head p { color: var(--ink-soft); }
+  .band-deep .sec-head p, .band-deep-grad .sec-head p { color: var(--on-deep-soft); }
+
+  /* ---------- VISION / MISSION ---------- */
+  .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .vm-card {
+    background: #fff; border-radius: 18px; padding: 40px 36px; box-shadow: var(--shadow-cream);
+    border-top: 3px solid var(--royal); position: relative;
+  }
+  .vm-card.mission { border-top-color: var(--gold-deep); }
+  .vm-card .k { font-family:'Inter'; font-weight: 600; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--royal); }
+  .vm-card.mission .k { color: var(--gold-deep); }
+  .vm-card h3 { font-family:'Fraunces'; font-weight: 600; font-size: 1.5rem; color: var(--ink); margin: 12px 0 14px; }
+  .vm-card p { color: var(--ink-soft); }
+
+  /* verset bandeau */
+  .verse-band {
+    margin-top: 40px; padding: 40px; border-radius: 18px; text-align: center;
+    background: var(--grad-hero); color: var(--on-deep); box-shadow: var(--shadow-cream);
+  }
+  .verse-band p { font-family:'Fraunces'; font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.4rem); color: var(--gold-bright); max-width: 760px; margin: 0 auto; line-height: 1.5; }
+  .verse-band cite { display:block; font-family:'Inter'; font-style: normal; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-deep-soft); margin-top: 16px; }
+
+  /* ---------- PARRAINAGE ---------- */
+  .patrons { display: flex; gap: 56px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+  .patron { text-align: center; max-width: 220px; }
+  .patron .photo {
+    width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 18px;
+    background: linear-gradient(150deg, var(--royal), var(--deep)); border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family:'Fraunces'; font-weight: 700; font-size: 2.4rem; color: var(--gold-bright);
+    box-shadow: var(--shadow-cream);
+  }
+  .patron h3 { font-family:'Fraunces'; font-weight: 700; font-size: 1.2rem; color: var(--ink); }
+  .patron .role { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; margin-top: 5px; }
+  .patrons-note { text-align: center; max-width: 620px; margin: 0 auto; font-style: italic; color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* mot de l'hôte */
+  .host-word {
+    margin-top: 56px; display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: center;
+    background: #fff; border-radius: 20px; padding: 36px 40px; box-shadow: var(--shadow-cream);
+  }
+  .host-word .photo {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: linear-gradient(150deg, var(--violet-soft), var(--deep)); border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center; font-family:'Fraunces'; font-weight: 700; font-size: 2rem; color: var(--gold-bright);
+  }
+  .host-word .k { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
+  .host-word blockquote { font-family:'Fraunces'; font-style: italic; font-size: 1.2rem; color: var(--ink); line-height: 1.5; margin: 12px 0 14px; }
+  .host-word .who { color: var(--ink-soft); font-size: 0.92rem; }
+  .host-word .who b { color: var(--ink); }
+
+  /* ---------- PROGRAMME ---------- */
+  .days { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-deep); }
+  .day-col { background: rgba(255,255,255,0.04); border-right: 1px solid var(--hair-light); }
+  .day-col:last-child { border-right: none; }
+  .day-head { padding: 26px 26px 22px; background: rgba(212,175,55,0.07); border-bottom: 1px solid var(--hair-light); }
+  .day-head .k { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .day-head h3 { font-family:'Fraunces'; font-weight: 600; font-size: 1.35rem; color: var(--on-deep); margin-top: 8px; }
+  .day-body { padding: 26px; }
+  .slot { padding: 14px 0; border-bottom: 1px solid var(--hair-light); }
+  .slot:last-child { border-bottom: none; }
+  .slot .time { font-family:'Fraunces'; font-weight: 600; color: var(--gold-bright); font-size: 0.98rem; }
+  .slot .what { color: var(--on-deep-soft); font-size: 0.92rem; margin-top: 3px; }
+  .day-foot { text-align: center; margin-top: 28px; font-style: italic; color: var(--on-deep-soft); font-size: 0.95rem; }
+  .day-foot b { color: var(--gold); font-style: normal; }
+
+  /* ---------- MATRIARCHES ---------- */
+  .label-line { text-align: center; font-family:'Fraunces'; font-style: italic; font-size: 1.3rem; color: var(--gold-deep); margin-bottom: 48px; }
+  .matriarchs { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; }
+  .matriarch { text-align: center; }
+  .matriarch .photo {
+    width: 100%; aspect-ratio: 1; border-radius: 50%; margin-bottom: 18px; position: relative;
+    background: linear-gradient(150deg, var(--royal), var(--deep)); border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center; font-family:'Fraunces'; font-weight: 700; font-size: 2rem; color: var(--gold-bright);
+    box-shadow: var(--shadow-cream); transition: transform .3s var(--ease);
+  }
+  .matriarch:hover .photo { transform: translateY(-6px); }
+  .matriarch .flag { position: absolute; bottom: 6px; right: 12%; width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; font-size: 1rem; display:flex; align-items:center; justify-content:center; background:#fff; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+  .matriarch .k { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
+  .matriarch h3 { font-family:'Fraunces'; font-weight: 700; font-size: 1.1rem; color: var(--ink); margin-top: 5px; }
+  .matriarch .country { color: var(--ink-faint); font-size: 0.86rem; margin-top: 3px; }
+
+  /* ---------- PILIERS (Answer the call) ---------- */
+  .pillars4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; margin-bottom: 64px; }
+  .pillar4 { text-align: center; padding: 12px; }
+  .pillar4 .ic { width: 60px; height: 60px; margin: 0 auto 18px; border-radius: 50%; background: rgba(212,175,55,0.10); border: 1px solid var(--hair-light); display: flex; align-items: center; justify-content: center; color: var(--gold); }
+  .pillar4 h3 { font-family:'Fraunces'; font-weight: 600; font-size: 1.1rem; color: var(--on-deep); }
+
+  /* infos pratiques + dons */
+  .info-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; }
+  .facts-card, .donate-card { border-radius: 20px; padding: 36px 38px; }
+  .facts-card { background: rgba(255,255,255,0.04); border: 1px solid var(--hair-light); }
+  .fact { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--hair-light); }
+  .fact:last-child { border-bottom: none; }
+  .fact .k { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding-top: 2px; }
+  .fact .v { color: var(--on-deep); font-weight: 500; }
+  .fact .v.free { font-family:'Fraunces'; font-weight: 600; font-size: 1.15rem; color: var(--gold-bright); }
+  .donate-card { background: var(--cream); color: var(--ink); box-shadow: var(--shadow-deep); }
+  .donate-card h3 { font-family:'Fraunces'; font-weight: 700; font-size: 1.3rem; color: var(--ink); margin-bottom: 6px; }
+  .donate-card > p { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 20px; }
+  .bank { background: var(--cream-2); border-radius: 12px; padding: 18px 20px; }
+  .bank .row { padding: 6px 0; font-size: 0.92rem; }
+  .bank .row b { color: var(--ink); } .bank .row span { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .bank .org { font-family:'Fraunces'; font-weight: 700; color: var(--ink); margin-bottom: 8px; font-size: 1rem; }
+
+  /* ---------- INSCRIPTION ---------- */
+  .signup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .signup-intro .deadline { display:inline-flex; align-items:center; gap: 8px; margin-top: 18px; padding: 8px 16px; border-radius: 100px; background: rgba(169,132,43,0.12); border: 1px solid var(--hair-light); color: var(--gold); font-size: 0.86rem; font-weight: 500; }
+  .contacts { margin-top: 28px; }
+  .contacts .k { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-deep-faint); font-weight: 600; margin-bottom: 10px; }
+  .contacts a { display: inline-block; color: var(--on-deep-soft); font-variant-numeric: tabular-nums; margin-right: 18px; font-size: 0.95rem; transition: color .2s; }
+  .contacts a:hover { color: var(--gold); }
+
+  form.reg { background: #fff; border-radius: 22px; padding: 40px 36px; box-shadow: var(--shadow-deep); }
+  form.reg h3 { font-family:'Fraunces'; font-weight: 700; font-size: 1.5rem; color: var(--ink); margin-bottom: 6px; }
+  form.reg .sub { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 26px; }
+  .field { margin-bottom: 17px; } .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  label { display: block; font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 7px; font-weight: 600; }
+  input, select {
+    width: 100%; padding: 13px 15px; border-radius: 11px; background: var(--cream);
+    border: 1px solid var(--hair-dark); color: var(--ink); font-family: 'Inter'; font-size: 0.95rem;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  input::placeholder { color: var(--ink-faint); }
+  input:focus, select:focus { outline: none; border-color: var(--gold-deep); box-shadow: 0 0 0 3px rgba(169,132,43,0.18); }
+  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C4E76' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; }
+  form.reg .btn { width: 100%; justify-content: center; margin-top: 10px; padding: 15px; }
+  .form-note { text-align: center; font-size: 0.8rem; color: var(--ink-faint); margin-top: 14px; }
+  .reg-success { display: none; text-align: center; padding: 28px 10px; }
+  .reg-success.show { display: block; animation: fade .5s var(--ease); }
+  .reg-success .check { width: 58px; height: 58px; margin: 0 auto 18px; border-radius: 50%; background: var(--grad-gold); display: flex; align-items: center; justify-content: center; }
+  .reg-success h3 { margin-bottom: 8px; } .reg-success p { color: var(--ink-soft); }
+  @keyframes fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--void); padding: 60px 0 38px; border-top: 1px solid var(--hair-light); }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+  .foot-brand p { color: var(--on-deep-faint); font-size: 0.9rem; max-width: 320px; margin-top: 16px; }
+  .foot-col h4 { font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .foot-col a { display: block; color: var(--on-deep-faint); font-size: 0.92rem; margin-bottom: 11px; transition: color .2s; }
+  .foot-col a:hover { color: var(--on-deep); }
+  .orgs { display: flex; flex-wrap: wrap; gap: 6px 22px; padding-top: 30px; border-top: 1px solid var(--hair-light); }
+  .orgs span { font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-deep-faint); }
+  .copyright { margin-top: 24px; font-size: 0.8rem; color: var(--on-deep-faint); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+  /* mobile menu */
+  .mobile-menu { position: fixed; inset: 0; z-index: 99; background: rgba(30,11,62,0.98); backdrop-filter: blur(20px); display: none; flex-direction: column; align-items: center; justify-content: center; gap: 26px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family:'Fraunces'; font-weight: 600; font-size: 1.6rem; color: var(--on-deep); }
+  .mobile-close { position: absolute; top: 24px; right: 24px; background:none; border:none; color: var(--on-deep); cursor:pointer; padding:8px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  /* Tablette large : on resserre les sections de contenu lourdes */
+  @media (max-width: 1080px) {
+    .foot-grid { gap: 32px; }
+    .signup-grid { gap: 40px; }
+    .host-word { padding: 32px 34px; }
+  }
+
+  /* Tablette / grand mobile : bascule menu burger + grilles en 2 ou 1 colonne */
+  @media (max-width: 940px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .vm-grid, .info-grid, .signup-grid { grid-template-columns: 1fr; }
+    .matriarchs { grid-template-columns: repeat(2,1fr); gap: 32px 22px; }
+    .pillars4 { grid-template-columns: repeat(2,1fr); gap: 30px 22px; }
+    .days { grid-template-columns: 1fr; }
+    .day-col { border-right: none; border-bottom: 1px solid var(--hair-light); }
+    .day-col:last-child { border-bottom: none; }
+    .host-word { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .band { padding: 92px 0; }
+    .sec-head { margin-bottom: 48px; }
+  }
+
+  /* Petite tablette / mobile paysage */
+  @media (max-width: 760px) {
+    .nav-inner { height: 66px; }
+    .hero { padding-top: 96px; }
+    .hero-logo { width: 78px; height: 78px; margin-bottom: 22px; }
+    .hero-stats { gap: clamp(16px, 5vw, 40px); padding: 24px 26px; margin-top: 40px; }
+    .verse-band { padding: 32px 26px; }
+    .vm-card { padding: 34px 28px; }
+    .facts-card, .donate-card { padding: 30px 28px; }
+    form.reg { padding: 34px 28px; }
+  }
+
+  /* Mobile portrait */
+  @media (max-width: 600px) {
+    .wrap { padding: 0 18px; }
+    .band { padding: 72px 0; }
+    .field-row { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; gap: 30px; }
+    .hero-stats { gap: 14px; padding: 20px 16px; width: 100%; }
+    .patrons { gap: 32px; }
+    .fact { grid-template-columns: 1fr; gap: 4px; }
+    .lang-desktop { display: none; }
+    .sec-head { margin-bottom: 40px; }
+    .countdown { gap: 6px; }
+    .cd-unit { min-width: 50px; }
+    .host-word { padding: 30px 24px; }
+    .verse-band { padding: 28px 22px; margin-top: 32px; }
+    .day-foot { margin-top: 22px; }
+  }
+
+  /* Petit mobile : grilles à une seule colonne, typo resserrée */
+  @media (max-width: 460px) {
+    .wrap { padding: 0 15px; }
+    .nav-inner { height: 60px; }
+    .brand-mark { width: 36px; height: 36px; }
+    .brand-text b { font-size: 1rem; }
+    .matriarchs { grid-template-columns: 1fr; gap: 28px; max-width: 280px; margin-inline: auto; }
+    .pillars4 { grid-template-columns: 1fr; gap: 26px; max-width: 280px; margin-inline: auto; }
+    .patrons { gap: 28px; }
+    .hero-stats { flex-direction: column; gap: 0; padding: 8px 22px; }
+    .hero-stats .stat { padding: 14px 0; width: 100%; border-bottom: 1px solid var(--hair-light); }
+    .hero-stats .stat:last-child { border-bottom: none; }
+    .stat-sep { display: none; }
+    .hero-cta { width: 100%; }
+    .hero-cta .btn { width: 100%; justify-content: center; }
+    .vm-card, .facts-card, .donate-card, form.reg { padding: 28px 22px; }
+    .bank { padding: 16px; }
+    .bank .row span { word-break: break-all; }
+    .contacts a { display: block; margin: 0 0 8px; }
+  }
+
+  /* Très petit mobile : countdown compact */
+  @media (max-width: 360px) {
+    .countdown { gap: 4px; }
+    .cd-unit { min-width: 42px; }
+    .cd-sep { display: none; }
+    .hero-meta { gap: 8px 16px; }
+  }
+
+  .lang-mobile { display: none; }
+  @media (max-width: 940px) { .lang-mobile { display: inline-flex; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Au Sommet des Montagnes">
+      <svg class="brand-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0CE5B"/><stop offset="1" stop-color="#A9842B"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="#FAF6EC"/>
+        <path d="M50 22 A26 26 0 0 1 76 48" stroke="url(#bm)" stroke-width="2.4" fill="none" opacity="0.7"/>
+        <path d="M22 64 L37 40 L45 51 L56 34 L66 50 L78 64 Z" fill="#8E1768"/>
+        <path d="M37 40 L41 46 M56 34 L60 42" stroke="#FAF6EC" stroke-width="1.6"/>
+      </svg>
+      <span class="brand-text"><b>ASM</b><span data-i18n="brand_sub">Sommet 2026</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation">
+      <a href="#about" data-i18n="nav_about">Le sommet</a>
+      <a href="#program" data-i18n="nav_program">Programme</a>
+      <a href="#matriarchs" data-i18n="nav_matriarchs">Matriarches</a>
+      <a href="#register" data-i18n="nav_register">Inscription</a>
+      <div class="lang lang-desktop" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#register" class="btn" data-i18n="cta_register">Réserver ma place</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Fermer"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+  <a href="#about" data-i18n="nav_about">Le sommet</a>
+  <a href="#program" data-i18n="nav_program">Programme</a>
+  <a href="#matriarchs" data-i18n="nav_matriarchs">Matriarches</a>
+  <a href="#register" data-i18n="nav_register">Inscription</a>
+  <div class="lang" role="group" aria-label="Langue / Language">
+    <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+  <a href="#register" class="btn" data-i18n="cta_register">Réserver ma place</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-content">
+    <svg class="hero-logo" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="50" r="48" fill="#FAF6EC"/>
+      <path d="M50 18 A30 30 0 0 1 80 48" stroke="#A9842B" stroke-width="2.4" fill="none" opacity="0.7"/>
+      <path d="M18 66 L36 36 L46 50 L59 30 L70 50 L82 66 Z" fill="#8E1768"/>
+      <path d="M36 36 L40 43 M59 30 L63 39" stroke="#FAF6EC" stroke-width="1.8"/>
+      <text x="50" y="80" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="9" fill="#8E1768" letter-spacing="1">ASM</text>
+    </svg>
+    <div class="hero-sup"><span class="eyebrow on-deep centered" data-i18n="hero_sup">Conférence des Femmes Leaders d'Afrique</span></div>
+    <div class="hero-dots dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <h1>
+      <span class="l1"><span data-i18n="hero_t1">Au Sommet</span></span>
+      <span class="l2"><span data-i18n="hero_t2">des Montagnes</span></span>
+    </h1>
+    <p class="hero-verse">
+      <span data-i18n="hero_verse">« La montagne de la maison de l'Éternel sera fondée au sommet des montagnes … et toutes les nations y afflueront. »</span>
+      <cite data-i18n="hero_verse_ref">Ésaïe 2.2</cite>
+    </p>
+    <div class="hero-stats">
+      <div class="stat"><b>03</b><span data-i18n="stat_days">Jours</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><b>04</b><span data-i18n="stat_matriarchs">Matriarches</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><b>3000+</b><span data-i18n="stat_leaders">Leaders</span></div>
+    </div>
+    <div class="hero-meta">
+      <span class="date" data-i18n="hero_dates">18 – 19 – 20 Août 2026</span>
+      <span class="place">Palais des Congrès · Cotonou</span>
+    </div>
+    <div class="countdown" id="countdown" aria-label="Compte à rebours">
+      <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-label" data-i18n="cd_days">Jours</div></div>
+      <div class="cd-sep"></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-label" data-i18n="cd_hours">Heures</div></div>
+      <div class="cd-sep"></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-label" data-i18n="cd_min">Min</div></div>
+      <div class="cd-sep"></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-label" data-i18n="cd_sec">Sec</div></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#register" class="btn" data-i18n="cta_register">Réserver ma place</a>
+      <a href="#program" class="btn btn-ghost" data-i18n="cta_program">Voir le programme</a>
+    </div>
+  </div>
+  <div class="mountains" aria-hidden="true">
+    <svg viewBox="0 0 1440 240" preserveAspectRatio="none">
+      <path d="M0 240 V150 L180 96 L300 130 L470 60 L560 110 L700 150 L760 120 L900 168 L1010 110 L1180 158 L1300 120 L1440 150 V240 Z" fill="#5B2BA8" opacity="0.55"/>
+      <path d="M0 240 V180 L150 120 L290 170 L430 100 L540 150 L660 190 L820 130 L980 178 L1120 140 L1280 184 L1440 150 V240 Z" fill="#4A2090"/>
+      <path d="M150 120 L120 145 L180 145 Z M430 100 L405 130 L455 130 Z M820 130 L795 158 L845 158 Z M1120 140 L1095 165 L1145 165 Z" fill="#FAF6EC" opacity="0.85"/>
+    </svg>
+  </div>
+</section>
+
+<!-- POURQUOI / VISION-MISSION -->
+<section class="band band-cream" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="about_eyebrow">Pourquoi ce sommet</span>
+      <h2 class="serif" data-i18n="about_title">L'heure de se lever</h2>
+      <p data-i18n="about_lead">Les femmes jouent un rôle important dans le tissu social et économique de l'Afrique. Elles contribuent largement à la paix et au développement de notre continent, parfois de façon informelle, car leur place et leur rôle ne sont pas reconnus. ASM 2026 vient inverser cette trajectoire.</p>
+    </div>
+    <div class="vm-grid reveal">
+      <div class="vm-card vision">
+        <span class="k" data-i18n="vision_k">Notre vision</span>
+        <h3 data-i18n="vision_h">Élever une génération</h3>
+        <p data-i18n="vision_p">Voir se lever une génération de femmes leaders, équipées pour impacter toutes les sphères de la société.</p>
+      </div>
+      <div class="vm-card mission">
+        <span class="k" data-i18n="mission_k">Notre mission</span>
+        <h3 data-i18n="mission_h">Rassembler &amp; équiper</h3>
+        <p data-i18n="mission_p">Rassembler, former, orienter et équiper les femmes leaders, dans un cadre structuré porté par des matriarches expérimentées.</p>
+      </div>
+    </div>
+    <div class="verse-band reveal">
+      <p data-i18n="verse1">« Vous êtes le sel de la terre … Vous êtes la lumière du monde. Une ville située sur une montagne ne peut être cachée. »</p>
+      <cite data-i18n="verse1_ref">Matthieu 5.13-14</cite>
+    </div>
+  </div>
+</section>
+
+<!-- PARRAINAGE + MOT DE L'HÔTE -->
+<section class="band band-cream-2">
+  <div class="wrap">
+    <div class="sec-head centered reveal">
+      <span class="eyebrow centered" data-i18n="patron_eyebrow">Parrainage</span>
+      <h2 class="serif" data-i18n="patron_title">Sous leur couverture</h2>
+    </div>
+    <div class="patrons reveal">
+      <div class="patron">
+        <div > <img src="karambiri.jpg" alt="" class="photo" ></div>
+        <h3>Mamadou P. Karambiri</h3>
+        <div class="role" data-i18n="patron_role">Patriarche · Parrain</div>
+      </div>
+      <div class="patron">
+        <div > <img src="ernest.jpg" alt="" class="photo" > </div>
+        <h3>Ernest Oueounou</h3>
+        <div class="role" data-i18n="patron_role">Patriarche · Parrain</div>
+      </div>
+    </div>
+    <p class="patrons-note reveal" data-i18n="patron_note">Pères spirituels de cette génération, les deux patriarches accompagnent et bénissent la conférence de leur couverture. Ils pourront ponctuellement intervenir pour un temps de prière ou un mot de conseil.</p>
+
+    <div class="host-word reveal">
+      <div > <img src="janine.jpg" alt="" class="photo" > </div>
+      <div>
+        <span class="k" data-i18n="host_k">Mot de l'hôte</span>
+        <blockquote data-i18n="host_quote">« À travers les matriarches, Dieu suscite et équipe des femmes leaders dans tous les domaines de la vie. C'est un appel à aller plus haut et plus loin, ensemble. »</blockquote>
+        <p class="who"><b>Apôtre Janine Aho</b> — <span data-i18n="host_role">Hôte de la conférence &amp; Présidente du Mouvement des Servantes de Dieu (MSD), Bénin.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section class="band band-deep" id="program">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow on-deep" data-i18n="program_eyebrow">Trois jours, une ascension</span>
+      <h2 class="serif" data-i18n="program_title">Le chemin vers le sommet</h2>
+      <p data-i18n="program_lead">Trois temps forts rythment cette ascension collective : poser les fondations de son identité, étendre son impact, puis transmettre l'héritage à la génération montante.</p>
+    </div>
+    <div class="days reveal">
+      <div class="day-col">
+        <div class="day-head"><span class="k" data-i18n="day1_k">Jour 1 · Identité</span><h3 data-i18n="day1_h">Se lever comme leader</h3></div>
+        <div class="day-body">
+          <div class="slot"><div class="time">08h30 – 12h30</div><div class="what" data-i18n="slot_morning">Plénières &amp; séminaires</div></div>
+          <div class="slot"><div class="time">12h30 – 14h30</div><div class="what" data-i18n="slot_lunch">Déjeuner offert</div></div>
+          <div class="slot"><div class="time">14h30 – 18h00</div><div class="what" data-i18n="slot_afternoon">Conférences &amp; salons</div></div>
+        </div>
+      </div>
+      <div class="day-col">
+        <div class="day-head"><span class="k" data-i18n="day2_k">Jour 2 · Impact</span><h3 data-i18n="day2_h">Influencer les nations</h3></div>
+        <div class="day-body">
+          <div class="slot"><div class="time">08h30 – 12h30</div><div class="what" data-i18n="slot_morning">Plénières &amp; séminaires</div></div>
+          <div class="slot"><div class="time">12h30 – 14h30</div><div class="what" data-i18n="slot_lunch">Déjeuner offert</div></div>
+          <div class="slot"><div class="time">14h30 – 18h00</div><div class="what" data-i18n="slot_afternoon">Conférences &amp; salons</div></div>
+        </div>
+      </div>
+      <div class="day-col">
+        <div class="day-head"><span class="k" data-i18n="day3_k">Jour 3 · Transmission</span><h3 data-i18n="day3_h">Préparer la relève</h3></div>
+        <div class="day-body">
+          <div class="slot"><div class="time">08h30 – 12h30</div><div class="what" data-i18n="slot_morning">Plénières &amp; séminaires</div></div>
+          <div class="slot"><div class="time">12h30 – 14h30</div><div class="what" data-i18n="slot_lunch">Déjeuner offert</div></div>
+          <div class="slot"><div class="time">14h30 – 18h00</div><div class="what" data-i18n="slot_afternoon">Conférences &amp; salons</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="day-foot reveal"><b data-i18n="program_foot_b">Chaque jour</b> <span data-i18n="program_foot">· ponctué de prière, de louange et de ministration</span></p>
+  </div>
+</section>
+
+<!-- MATRIARCHES -->
+<section class="band band-cream" id="matriarchs">
+  <div class="wrap">
+    <div class="sec-head centered reveal">
+      <span class="eyebrow centered" data-i18n="matriarchs_eyebrow">Le cœur du sommet</span>
+      <h2 class="serif" data-i18n="matriarchs_title">Nos matriarches</h2>
+    </div>
+    <p class="label-line reveal serif" data-i18n="matriarchs_label">« Une matriarche = un label »</p>
+    <div class="matriarchs reveal">
+      <div class="matriarch">
+        <div > <img src="horteense.jpg" alt="" class="photo" ><span class="flag" aria-hidden="true">🇧🇫</span></div>
+        <span class="k" data-i18n="matriarch_k">Matriarche</span>
+        <h3>Hortense Karambiri</h3>
+        <div class="country">Burkina Faso</div>
+      </div>
+      <div class="matriarch">
+        <div > <img src="emikutino.jpg" alt="" class="photo" ><span class="flag" aria-hidden="true">🇨🇩</span></div>
+        <span class="k" data-i18n="matriarch_k">Matriarche</span>
+        <h3>Emi Kutino</h3>
+        <div class="country" data-i18n="country_drc">RD Congo</div>
+      </div>
+      <div class="matriarch">
+        <div > <img src="funke.jpg" alt="" class="photo" ><span class="flag" aria-hidden="true">🇳🇬</span></div>
+        <span class="k" data-i18n="matriarch_k">Matriarche</span>
+        <h3>Funke Felix-Adejumo</h3>
+        <div class="country">Nigeria</div>
+      </div>
+      <div class="matriarch">
+        <div> <img src="debora.jpg" alt="" class="photo" ><span class="flag" aria-hidden="true">🇨🇮</span></div>
+        <span class="k" data-i18n="matriarch_k">Matriarche</span>
+        <h3>Débora Gnepe</h3>
+        <div class="country" data-i18n="country_ci">Côte d'Ivoire</div>
+      </div>
+    </div>
+    <div class="verse-band reveal" style="margin-top:64px">
+      <p data-i18n="verse2">« Que chaque génération raconte tes œuvres à la génération suivante, et publie tes hauts faits. »</p>
+      <cite data-i18n="verse2_ref">Psaume 145.4</cite>
+    </div>
+  </div>
+</section>
+
+<!-- RÉPONDEZ À L'APPEL : piliers + infos + dons -->
+<section class="band band-deep-grad">
+  <div class="wrap">
+    <div class="sec-head centered reveal">
+      <span class="eyebrow on-deep centered" data-i18n="call_eyebrow">Répondez à l'appel</span>
+      <h2 class="serif" data-i18n="call_title">Viens prendre ta place au sommet</h2>
+    </div>
+    <div class="pillars4 reveal">
+      <div class="pillar4">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h5v16H6a2 2 0 0 0-2 2zM20 5a2 2 0 0 0-2-2h-5v16h5a2 2 0 0 1 2 2z"/></svg></div>
+        <h3 data-i18n="pillar1">Ancrage biblique</h3>
+      </div>
+      <div class="pillar4">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5M15.5 18.5c.3-2 1.7-3.2 3.5-3.2 1.4 0 2.6.7 3 2"/></svg></div>
+        <h3 data-i18n="pillar2">Modèles crédibles</h3>
+      </div>
+      <div class="pillar4">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
+        <h3 data-i18n="pillar3">Outils concrets</h3>
+      </div>
+      <div class="pillar4">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9z"/></svg></div>
+        <h3 data-i18n="pillar4">Réseau continental</h3>
+      </div>
+    </div>
+
+    <div class="info-grid reveal">
+      <div class="facts-card">
+        <div class="fact"><div class="k" data-i18n="info_venue">Lieu</div><div class="v">Palais des Congrès, Cotonou — Bénin</div></div>
+        <div class="fact"><div class="k" data-i18n="info_dates">Dates</div><div class="v" data-i18n="info_dates_v">18 – 20 Août 2026</div></div>
+        <div class="fact"><div class="k" data-i18n="info_deadline">Clôture</div><div class="v" data-i18n="info_deadline_v">Vendredi 31 juillet 2026 — places limitées</div></div>
+        <div class="fact"><div class="k" data-i18n="info_admission">Participation</div><div class="v free" data-i18n="info_admission_v">Entrée gratuite</div></div>
+      </div>
+      <div class="donate-card">
+        <h3 data-i18n="donate_title">Dons &amp; soutien</h3>
+        <p data-i18n="donate_p">Pour vos dons et votre soutien à l'événement :</p>
+        <div class="bank">
+          <div class="org" translate="no">Église du M.H.I.F</div>
+          <div class="row"><b>IBAN :</b> <span translate="no">BJ06 6BJ0 9901 0013 1000 1213 0270</span></div>
+          <div class="row"><b>SWIFT / BIC :</b> <span translate="no">DBLNBJBJ</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRIPTION -->
+<section class="band band-deep" id="register">
+  <div class="wrap">
+    <div class="signup-grid">
+      <div class="signup-intro reveal">
+        <span class="eyebrow on-deep" data-i18n="register_eyebrow">Inscription</span>
+        <h2 class="serif" style="font-family:'Fraunces';font-weight:700;font-size:clamp(2rem,4.6vw,3rem);margin:16px 0 18px" data-i18n="register_title">Réservez votre place</h2>
+        <p style="color:var(--on-deep-soft)" data-i18n="register_lead">L'inscription est gratuite et se fait en ligne. Les places au Palais des Congrès sont limitées — réservez la vôtre dès maintenant.</p>
+        <div class="deadline" data-i18n="register_deadline">Clôture des inscriptions : vendredi 31 juillet 2026</div>
+        <div class="contacts">
+          <div class="k" data-i18n="contact_k">Contact</div>
+          <a href="tel:+22901662654 12">+229 01 66 26 54 12</a>
+          <a href="tel:+2290196964698">+229 01 96 96 46 98</a>
+          <a href="tel:+2290196363626">+229 01 96 36 36 26</a>
+        </div>
+      </div>
+
+      <form class="reg reveal" id="regForm" novalidate>
+        <div id="regFields">
+          <h3 data-i18n="form_title">Formulaire d'inscription</h3>
+          <p class="sub" data-i18n="form_sub">Remplissez les champs ci-dessous. Une confirmation vous parviendra par e-mail.</p>
+          <div class="field-row">
+            <div class="field"><label for="fn" data-i18n="form_lastname">Nom</label><input type="text" id="fn" name="family-name" autocomplete="family-name" data-i18n-ph="ph_lastname" placeholder="Ex. : Dossou…" required></div>
+            <div class="field"><label for="gn" data-i18n="form_firstname">Prénom</label><input type="text" id="gn" name="given-name" autocomplete="given-name" data-i18n-ph="ph_firstname" placeholder="Ex. : Marie…" required></div>
+          </div>
+          <div class="field"><label for="em" data-i18n="form_email">Adresse e-mail</label><input type="email" id="em" name="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="vous@exemple.com" required></div>
+          <div class="field"><label for="ph" data-i18n="form_phone">Téléphone</label><input type="tel" id="ph" name="tel" autocomplete="tel" inputmode="tel" placeholder="+229…" required></div>
+          <div class="field-row">
+            <div class="field"><label for="ct" data-i18n="form_location">Pays / Ville</label><input type="text" id="ct" name="address-level2" autocomplete="address-level2" data-i18n-ph="ph_location" placeholder="Cotonou, Bénin" required></div>
+            <div class="field"><label for="mn" data-i18n="form_status">Statut / Ministère</label>
+              <select id="mn" name="ministry" required>
+                <option value="" disabled selected data-i18n="form_choose">Choisissez…</option>
+                <option data-i18n="opt_servant">Servante de Dieu</option>
+                <option data-i18n="opt_leader">Femme leader / Entrepreneure</option>
+                <option data-i18n="opt_church">Responsable d'église</option>
+                <option data-i18n="opt_student">Étudiante</option>
+                <option data-i18n="opt_other">Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+            <label for="company_url">Website</label>
+            <input type="text" id="company_url" name="company_url" autocomplete="off" tabindex="-1" placeholder="Leave empty">
+          </div>
+          <button type="submit" class="btn" data-i18n="form_submit">Valider mon inscription</button>
+          <p class="form-note" data-i18n="form_note">Inscription gratuite · Places limitées</p>
+        </div>
+        <div class="reg-success" id="regSuccess" role="status" aria-live="polite">
+          <div class="check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2E1065" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3 class="serif" data-i18n="success_title">Inscription confirmée</h3>
+          <p data-i18n="success_p">Merci, votre place est réservée. Surveillez votre boîte e-mail pour la confirmation et les détails pratiques.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand" aria-label="Au Sommet des Montagnes">
+          <svg class="brand-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" fill="#FAF6EC"/>
+            <path d="M22 64 L37 40 L45 51 L56 34 L66 50 L78 64 Z" fill="#8E1768"/>
+          </svg>
+          <span class="brand-text"><b>ASM</b><span data-i18n="brand_sub">Sommet 2026</span></span>
+        </a>
+        <p data-i18n="foot_tag">Conférence des Femmes Leaders d'Afrique. Un sommet pour élever une génération de femmes leaders à travers le continent.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_nav">Navigation</h4>
+        <a href="#about" data-i18n="nav_about">Le sommet</a>
+        <a href="#program" data-i18n="nav_program">Programme</a>
+        <a href="#matriarchs" data-i18n="nav_matriarchs">Matriarches</a>
+        <a href="#register" data-i18n="nav_register">Inscription</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_practical">Infos pratiques</h4>
+        <a href="#register">Palais des Congrès, Cotonou</a>
+        <a href="#top" data-i18n="hero_dates">18 – 19 – 20 Août 2026</a>
+        <a href="#register" data-i18n="foot_free">Entrée gratuite</a>
+      </div>
+    </div>
+    <div class="orgs">
+      <span>Fondation Excell pour Christ</span><span>·</span>
+      <span data-i18n="org_msd">Mouvement des Servantes de Dieu du Bénin</span><span>·</span>
+      <span>Au Sommet des Montagnes</span>
+    </div>
+    <p class="copyright">© 2026 Au Sommet des Montagnes — ASM. <span data-i18n="rights">Tous droits réservés.</span></p>
+  </div>
+</footer>
+
+<script>
+  // ===== i18n =====
+  const I18N = {
+    fr: {
+      brand_sub: "Sommet 2026",
+      nav_about: "Le sommet", nav_program: "Programme", nav_matriarchs: "Matriarches", nav_register: "Inscription",
+      cta_register: "Réserver ma place", cta_program: "Voir le programme",
+      hero_sup: "Conférence des Femmes Leaders d'Afrique",
+      hero_t1: "Au Sommet", hero_t2: "des Montagnes",
+      hero_verse: "« La montagne de la maison de l'Éternel sera fondée au sommet des montagnes … et toutes les nations y afflueront. »",
+      hero_verse_ref: "Ésaïe 2.2",
+      stat_days: "Jours", stat_matriarchs: "Matriarches", stat_leaders: "Leaders",
+      hero_dates: "18 – 19 – 20 Août 2026",
+      cd_days: "Jours", cd_hours: "Heures", cd_min: "Min", cd_sec: "Sec",
+      about_eyebrow: "Pourquoi ce sommet", about_title: "L'heure de se lever",
+      about_lead: "Les femmes jouent un rôle important dans le tissu social et économique de l'Afrique. Elles contribuent largement à la paix et au développement de notre continent, parfois de façon informelle, car leur place et leur rôle ne sont pas reconnus. ASM 2026 vient inverser cette trajectoire.",
+      vision_k: "Notre vision", vision_h: "Élever une génération",
+      vision_p: "Voir se lever une génération de femmes leaders, équipées pour impacter toutes les sphères de la société.",
+      mission_k: "Notre mission", mission_h: "Rassembler & équiper",
+      mission_p: "Rassembler, former, orienter et équiper les femmes leaders, dans un cadre structuré porté par des matriarches expérimentées.",
+      verse1: "« Vous êtes le sel de la terre … Vous êtes la lumière du monde. Une ville située sur une montagne ne peut être cachée. »",
+      verse1_ref: "Matthieu 5.13-14",
+      patron_eyebrow: "Parrainage", patron_title: "Sous leur couverture", patron_role: "Patriarche · Parrain",
+      patron_note: "Pères spirituels de cette génération, les deux patriarches accompagnent et bénissent la conférence de leur couverture. Ils pourront ponctuellement intervenir pour un temps de prière ou un mot de conseil.",
+      host_k: "Mot de l'hôte",
+      host_quote: "« À travers les matriarches, Dieu suscite et équipe des femmes leaders dans tous les domaines de la vie. C'est un appel à aller plus haut et plus loin, ensemble. »",
+      host_role: "Hôte de la conférence & Présidente du Mouvement des Servantes de Dieu (MSD), Bénin.",
+      program_eyebrow: "Trois jours, une ascension", program_title: "Le chemin vers le sommet",
+      program_lead: "Trois temps forts rythment cette ascension collective : poser les fondations de son identité, étendre son impact, puis transmettre l'héritage à la génération montante.",
+      day1_k: "Jour 1 · Identité", day1_h: "Se lever comme leader",
+      day2_k: "Jour 2 · Impact", day2_h: "Influencer les nations",
+      day3_k: "Jour 3 · Transmission", day3_h: "Préparer la relève",
+      slot_morning: "Plénières & séminaires", slot_lunch: "Déjeuner offert", slot_afternoon: "Conférences & salons",
+      program_foot_b: "Chaque jour", program_foot: "· ponctué de prière, de louange et de ministration",
+      matriarchs_eyebrow: "Le cœur du sommet", matriarchs_title: "Nos matriarches",
+      matriarchs_label: "« Une matriarche = un label »", matriarch_k: "Matriarche",
+      country_drc: "RD Congo", country_ci: "Côte d'Ivoire",
+      verse2: "« Que chaque génération raconte tes œuvres à la génération suivante, et publie tes hauts faits. »",
+      verse2_ref: "Psaume 145.4",
+      call_eyebrow: "Répondez à l'appel", call_title: "Viens prendre ta place au sommet",
+      pillar1: "Ancrage biblique", pillar2: "Modèles crédibles", pillar3: "Outils concrets", pillar4: "Réseau continental",
+      info_venue: "Lieu", info_dates: "Dates", info_dates_v: "18 – 20 Août 2026",
+      info_deadline: "Clôture", info_deadline_v: "Vendredi 31 juillet 2026 — places limitées",
+      info_admission: "Participation", info_admission_v: "Entrée gratuite",
+      donate_title: "Dons & soutien", donate_p: "Pour vos dons et votre soutien à l'événement :",
+      register_eyebrow: "Inscription", register_title: "Réservez votre place",
+      register_lead: "L'inscription est gratuite et se fait en ligne. Les places au Palais des Congrès sont limitées — réservez la vôtre dès maintenant.",
+      register_deadline: "Clôture des inscriptions : vendredi 31 juillet 2026",
+      contact_k: "Contact",
+      form_title: "Formulaire d'inscription", form_sub: "Remplissez les champs ci-dessous. Une confirmation vous parviendra par e-mail.",
+      form_lastname: "Nom", form_firstname: "Prénom", form_email: "Adresse e-mail", form_phone: "Téléphone",
+      form_location: "Pays / Ville", form_status: "Statut / Ministère", form_choose: "Choisissez…",
+      opt_servant: "Servante de Dieu", opt_leader: "Femme leader / Entrepreneure", opt_church: "Responsable d'église", opt_student: "Étudiante", opt_other: "Autre",
+      form_submit: "Valider mon inscription", form_note: "Inscription gratuite · Places limitées",
+      ph_lastname: "Ex. : Dossou…", ph_firstname: "Ex. : Marie…", ph_location: "Cotonou, Bénin",
+      success_title: "Inscription confirmée", success_p: "Merci, votre place est réservée. Surveillez votre boîte e-mail pour la confirmation et les détails pratiques.",
+      foot_tag: "Conférence des Femmes Leaders d'Afrique. Un sommet pour élever une génération de femmes leaders à travers le continent.",
+      foot_nav: "Navigation", foot_practical: "Infos pratiques", foot_free: "Entrée gratuite",
+      org_msd: "Mouvement des Servantes de Dieu du Bénin", rights: "Tous droits réservés."
+    },
+    en: {
+      brand_sub: "Summit 2026",
+      nav_about: "The summit", nav_program: "Program", nav_matriarchs: "Matriarchs", nav_register: "Register",
+      cta_register: "Reserve my seat", cta_program: "See the program",
+      hero_sup: "Conference of African Women Leaders",
+      hero_t1: "At The", hero_t2: "Mountain Tops",
+      hero_verse: "“The mountain of the LORD's temple will be established as the highest of the mountains … and all nations will stream to it.”",
+      hero_verse_ref: "Isaiah 2:2 (NIV)",
+      stat_days: "Days", stat_matriarchs: "Matriarchs", stat_leaders: "Leaders",
+      hero_dates: "August 18 – 19 – 20, 2026",
+      cd_days: "Days", cd_hours: "Hours", cd_min: "Min", cd_sec: "Sec",
+      about_eyebrow: "Why this gathering", about_title: "Time to Rise",
+      about_lead: "Across Africa, women are central to the social and economic fabric of the continent — driving peace and development, often informally, and often without recognition. Too many carry this weight alone, their place and influence unacknowledged. ASM 2026 sets out to change that story.",
+      vision_k: "Our vision", vision_h: "Raise a generation",
+      vision_p: "To see a generation of women leaders rise, equipped to shape every sphere of society.",
+      mission_k: "Our mission", mission_h: "Gather & equip",
+      mission_p: "To gather, train, mentor, and equip women leaders within a structured framework, carried by seasoned matriarchs.",
+      verse1: "“You are the salt of the earth … You are the light of the world. A town built on a hill cannot be hidden.”",
+      verse1_ref: "Matthew 5:13-14 (NIV)",
+      patron_eyebrow: "Patronage", patron_title: "Under their covering", patron_role: "Patriarch · Patron",
+      patron_note: "Spiritual fathers to this generation, both patriarchs walk alongside and bless the conference under their covering. They may step in, from time to time, to pray or offer a word of counsel.",
+      host_k: "A word from the host",
+      host_quote: "“Through the matriarchs, God is raising up and equipping women leaders across every sphere of life. This is a call to climb higher and go further — together.”",
+      host_role: "Host of the conference & President of the Mouvement des Servantes de Dieu (MSD), Benin.",
+      program_eyebrow: "Three days, one climb", program_title: "The Path to the Top",
+      program_lead: "Three defining moments shape this shared climb: laying the foundation of identity, extending influence, then passing the torch to the next generation.",
+      day1_k: "Day 1 · Identity", day1_h: "Rising as a Leader",
+      day2_k: "Day 2 · Impact", day2_h: "Influencing Nations",
+      day3_k: "Day 3 · Legacy", day3_h: "Preparing the Next Generation",
+      slot_morning: "Plenary sessions & seminars", slot_lunch: "Lunch provided", slot_afternoon: "Conferences & breakout sessions",
+      program_foot_b: "Every day", program_foot: "· woven through with prayer, worship, and ministry",
+      matriarchs_eyebrow: "The heart of the climb", matriarchs_title: "Our Matriarchs",
+      matriarchs_label: "“One matriarch = one label”", matriarch_k: "Matriarch",
+      country_drc: "DR Congo", country_ci: "Côte d'Ivoire",
+      verse2: "“One generation will commend your works to another; they will tell of your mighty acts.”",
+      verse2_ref: "Psalm 145:4 (NIV)",
+      call_eyebrow: "Answer the call", call_title: "Come take your place at the top",
+      pillar1: "Biblical Foundation", pillar2: "Credible Role Models", pillar3: "Practical Tools", pillar4: "Continental Network",
+      info_venue: "Venue", info_dates: "Dates", info_dates_v: "August 18 – 20, 2026",
+      info_deadline: "Deadline", info_deadline_v: "Friday, July 31, 2026 — limited seats",
+      info_admission: "Admission", info_admission_v: "Free entry",
+      donate_title: "Donations & Support", donate_p: "To support this event with a donation:",
+      register_eyebrow: "Registration", register_title: "Reserve your seat",
+      register_lead: "Registration is free and done online. Seats at the Palais des Congrès are limited — reserve yours now.",
+      register_deadline: "Registration closes Friday, July 31, 2026",
+      contact_k: "Contact",
+      form_title: "Registration form", form_sub: "Fill in the fields below. A confirmation will be sent to your e-mail.",
+      form_lastname: "Last name", form_firstname: "First name", form_email: "E-mail address", form_phone: "Phone",
+      form_location: "Country / City", form_status: "Status / Ministry", form_choose: "Choose…",
+      opt_servant: "Servant of God", opt_leader: "Woman leader / Entrepreneur", opt_church: "Church leader", opt_student: "Student", opt_other: "Other",
+      form_submit: "Confirm my registration", form_note: "Free registration · Limited seats",
+      ph_lastname: "e.g. Dossou…", ph_firstname: "e.g. Mary…", ph_location: "Cotonou, Benin",
+      success_title: "Registration confirmed", success_p: "Thank you, your seat is reserved. Watch your inbox for confirmation and practical details.",
+      foot_tag: "Conference of African Women Leaders. A summit to raise a generation of women leaders across the continent.",
+      foot_nav: "Navigation", foot_practical: "Practical info", foot_free: "Free entry",
+      org_msd: "Movement of Servants of God of Benin", rights: "All rights reserved."
+    }
+  };
+
+  function setLang(lang) {
+    const dict = I18N[lang] || I18N.fr;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const k = el.getAttribute("data-i18n");
+      if (dict[k] != null) el.textContent = dict[k];
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+      const k = el.getAttribute("data-i18n-ph");
+      if (dict[k] != null) el.setAttribute("placeholder", dict[k]);
+    });
+    document.querySelectorAll(".lang button").forEach(b => {
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+    try { localStorage.setItem("asm_lang", lang); } catch(e) {}
+    document.title = lang === "en"
+      ? "At The Mountain Tops — Conference of African Women Leaders · August 18-20, 2026"
+      : "Au Sommet des Montagnes — Conférence des Femmes Leaders d'Afrique · 18-20 août 2026";
+  }
+
+  document.querySelectorAll(".lang button").forEach(b => {
+    b.addEventListener("click", () => setLang(b.dataset.lang));
+  });
+  // langue initiale : mémoire > navigateur > fr
+  (function initLang(){
+    let saved; try { saved = localStorage.getItem("asm_lang"); } catch(e){}
+    const nav = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
+    setLang(saved || nav);
+  })();
+
+  // ===== nav scroll =====
+  const nav = document.getElementById("nav");
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  // ===== mobile menu =====
+  const mm = document.getElementById("mobileMenu");
+  document.getElementById("navToggle").addEventListener("click", () => { mm.classList.add("open"); document.getElementById("navToggle").setAttribute("aria-expanded","true"); });
+  document.getElementById("mobileClose").addEventListener("click", () => { mm.classList.remove("open"); document.getElementById("navToggle").setAttribute("aria-expanded","false"); });
+  mm.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mm.classList.remove("open")));
+
+  // ===== countdown → 18 août 2026 08:30 (Cotonou UTC+1) =====
+  const target = new Date("2026-08-18T08:30:00+01:00").getTime();
+  const pad = n => String(n).padStart(2,"0");
+  function tick(){
+    const d = target - Date.now();
+    if (d <= 0) { ["cd-d","cd-h","cd-m","cd-s"].forEach(i=>document.getElementById(i).textContent="00"); return; }
+    document.getElementById("cd-d").textContent = pad(Math.floor(d/86400000));
+    document.getElementById("cd-h").textContent = pad(Math.floor(d%86400000/3600000));
+    document.getElementById("cd-m").textContent = pad(Math.floor(d%3600000/60000));
+    document.getElementById("cd-s").textContent = pad(Math.floor(d%60000/1000));
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ===== reveal =====
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }}), { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // ===== form (branchera l'Edge Function Supabase) =====
+  const SUPABASE_URL = "https://hdeysxsvnabqbaodfdkd.supabase.co";
+  const REGISTER_FN_URL = SUPABASE_URL + "/functions/v1/register";
+  const SUPABASE_ANON_KEY = "sb_publishable_vQmvnL2-y5rrJmAP4o0FtQ_MlLv...";
+
+  document.getElementById("regForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const f = e.target;
+    if (!f.checkValidity()) {
+      const x = f.querySelector(":invalid");
+      if (x) x.focus();
+      f.reportValidity();
+      return;
+    }
+
+    const submitBtn = f.querySelector('button[type="submit"]');
+    const original = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = document.documentElement.lang === "en" ? "Sending…" : "Envoi…";
+
+    const payload = {
+      last_name: f.querySelector("#fn").value,
+      first_name: f.querySelector("#gn").value,
+      email: f.querySelector("#em").value,
+      phone: f.querySelector("#ph").value,
+      location: f.querySelector("#ct").value,
+      ministry: f.querySelector("#mn").value,
+      lang: document.documentElement.lang === "en" ? "en" : "fr",
+      website: f.querySelector("#company_url")?.value || ""
+    };
+
+    try {
+      const res = await fetch(REGISTER_FN_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+          "apikey": SUPABASE_ANON_KEY
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        document.getElementById("regFields").style.display = "none";
+        document.getElementById("regSuccess").classList.add("show");
+        return;
+      }
+
+      await res.json().catch(() => null);
+      let msg;
+      if (res.status === 409) {
+        msg = document.documentElement.lang === "en"
+          ? "This e-mail is already registered."
+          : "Cette adresse e-mail est déjà inscrite.";
+      } else {
+        msg = document.documentElement.lang === "en"
+          ? "An error occurred. Please try again."
+          : "Une erreur est survenue. Veuillez réessayer.";
+      }
+      alert(msg);
+    } catch {
+      alert(document.documentElement.lang === "en"
+        ? "Network error. Please try again."
+        : "Erreur réseau. Veuillez réessayer.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = original;
+    }
+  });
+</script>
+</body>
+</html>
