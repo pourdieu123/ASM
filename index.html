@@ -748,7 +748,7 @@
   <div class="wrap">
     <div class="signup-grid">
       <div class="signup-intro reveal">
-        <span class="eyebrow on-deep" data-i18n="register_eyebrow">Inscription</span>
+        <span  data-i18n="register_eyebrow"> <h6 style="color:#D4AF37;">Inscription</h6></span>
         <h2 class="serif" style="font-family:'Fraunces';font-weight:700;font-size:clamp(2rem,4.6vw,3rem);margin:16px 0 18px" data-i18n="register_title">Réservez votre place</h2>
         <p style="color:var(--on-deep-soft)" data-i18n="register_lead">L'inscription est gratuite et se fait en ligne. Les places au Palais des Congrès sont limitées — réservez la vôtre dès maintenant.</p>
         <div class="deadline" data-i18n="register_deadline">Clôture des inscriptions : vendredi 31 juillet 2026</div>
@@ -1045,7 +1045,6 @@
       location: f.querySelector("#ct").value.trim(),
       ministry: f.querySelector("#mn").value,
       lang,
-      website: f.querySelector("#company_url")?.value || "",
       source: "website"
     };
 
@@ -1065,21 +1064,35 @@
     submitBtn.disabled = true;
     submitBtn.textContent = lang === "en" ? "Sending…" : "Envoi…";
 
-    const { error } = await supabase.from("asm_registrations").insert(payload);
+    const response = await fetch(`${SUPABASE_URL}/functions/v1/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json().catch(() => null);
 
     submitBtn.disabled = false;
     submitBtn.textContent = original;
 
-    if (error) {
-      console.error(error);
-      const isRls = error.message?.includes("row-level security") || error.message?.includes("violates row-level security policy") || error.code === "42501";
-      if (error.code === "23505" || isRls) {
-        alert(lang === "en"
-          ? (isRls ? "The insertion is blocked by row-level security. Enable the insert policy in Supabase." : "This e-mail is already registered.")
-          : (isRls ? "L’insertion est bloquée par la sécurité en ligne. Activez la policy d’insertion dans Supabase." : "Cette adresse e-mail est déjà inscrite."));
+    if (!response.ok) {
+      console.error(result || response.statusText);
+      const message = result?.message || "";
+      const isDuplicate = message.includes("already_registered") || message.includes("duplicate");
+      if (isDuplicate) {
+        alert(lang === "en" ? "This e-mail is already registered." : "Cette adresse e-mail est déjà inscrite.");
       } else {
         alert(lang === "en" ? "An error occurred. Please try again." : "Une erreur est survenue. Veuillez réessayer.");
       }
+      return;
+    }
+
+    if (!result?.ok) {
+      alert(lang === "en" ? "An error occurred. Please try again." : "Une erreur est survenue. Veuillez réessayer.");
       return;
     }
 
