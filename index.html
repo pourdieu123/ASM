@@ -99,14 +99,7 @@
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
   .brand { display: flex; align-items: center; gap: 12px; }
-  /* LOGO NAV — arrondi propre */
-  .brand-mark {
-    width: 42px; height: 42px; flex-shrink: 0;
-    border-radius: 50%; object-fit: cover;
-    border: 1.5px solid var(--gold);
-    box-shadow: 0 2px 10px rgba(0,0,0,.25);
-    background: var(--deep);
-  }
+  .brand-mark { width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 24px rgba(5,0,20,0.24); background: rgba(255,255,255,0.96); padding: 3px; }
   .brand-text { display: flex; flex-direction: column; line-height: 1.06; }
   .brand-text b { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.12rem; color: var(--gold-bright); letter-spacing: 0.02em; }
   .brand-text span { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-deep-faint); }
@@ -160,15 +153,7 @@
   @keyframes glowin { to { opacity: 1; } }
   .hero-content { position: relative; z-index: 3; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-bottom: 40px; }
 
-  /* LOGO HERO — arrondi propre */
-  .hero-logo {
-    width: 96px; height: 96px; margin-bottom: 28px;
-    border-radius: 50%; object-fit: cover;
-    border: 2px solid var(--gold);
-    box-shadow: 0 8px 28px rgba(0,0,0,.35);
-    background: var(--deep);
-    opacity: 0; animation: rise .9s var(--ease) .1s forwards;
-  }
+  .hero-logo { width: 96px; height: 96px; margin-bottom: 28px; opacity: 0; animation: rise .9s var(--ease) .1s forwards; border-radius: 50%; object-fit: cover; box-shadow: 0 14px 34px rgba(5,0,20,0.28); background: rgba(255,255,255,0.96); padding: 4px; }
   .hero-sup { margin-bottom: 14px; opacity: 0; animation: rise .9s var(--ease) .25s forwards; }
   .hero-sup .eyebrow { font-size: 0.78rem; }
   .hero-dots { margin: 16px 0 30px; opacity: 0; animation: rise .9s var(--ease) .4s forwards; }
@@ -269,17 +254,28 @@
   /* ---------- PARRAINAGE ---------- */
   .patrons { display: flex; gap: 56px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
   .patron { text-align: center; max-width: 220px; }
-  .patron .photo {
-    width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 18px;
-    overflow: hidden;
+  .photo-frame {
+    position: relative; overflow: hidden; border-radius: 50%;
     background: linear-gradient(150deg, var(--royal), var(--deep)); border: 3px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    font-family:'Fraunces'; font-weight: 700; font-size: 2.4rem; color: var(--gold-bright);
-    box-shadow: var(--shadow-cream);
+    box-shadow: var(--shadow-cream); display: flex; align-items: center; justify-content: center;
   }
-  .patron .photo img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+  .patron .photo-frame {
+    width: 150px; height: 150px; margin: 0 auto 18px;
   }
+  .host-word .photo-frame {
+    width: 120px; height: 120px; margin: 0 auto;
+  }
+  .matriarch .photo-frame {
+    width: 100%; aspect-ratio: 1; margin-bottom: 18px;
+  }
+  .photo-frame .photo {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    border-radius: 50%; object-position: center 20%;
+  }
+  .photo-frame .photo.photo-janine { object-position: center 18%; }
+  .photo-frame .photo.photo-funke { object-position: center 16%; }
+  .photo-frame .photo.photo-emikutino { object-position: center 24%; }
+  .photo-frame .photo.photo-debora { object-position: center 18%; }
   .patron h3 { font-family:'Fraunces'; font-weight: 700; font-size: 1.2rem; color: var(--ink); }
   .patron .role { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; margin-top: 5px; }
   .patrons-note { text-align: center; max-width: 620px; margin: 0 auto; font-style: italic; color: var(--ink-soft); font-size: 0.95rem; }
@@ -289,13 +285,8 @@
     margin-top: 56px; display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: center;
     background: #fff; border-radius: 20px; padding: 36px 40px; box-shadow: var(--shadow-cream);
   }
-  .host-word .photo {
-    width: 120px; height: 120px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
-    background: linear-gradient(150deg, var(--violet-soft), var(--deep)); border: 3px solid var(--gold);
-    display: flex; align-items: center; justify-content: center; font-family:'Fraunces'; font-weight: 700; font-size: 2rem; color: var(--gold-bright);
-  }
-  .host-word .photo img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+  .host-word .photo-frame {
+    background: linear-gradient(150deg, var(--violet-soft), var(--deep));
   }
   .host-word .k { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
   .host-word blockquote { font-family:'Fraunces'; font-style: italic; font-size: 1.2rem; color: var(--ink); line-height: 1.5; margin: 12px 0 14px; }
@@ -321,20 +312,11 @@
   .label-line { text-align: center; font-family:'Fraunces'; font-style: italic; font-size: 1.3rem; color: var(--gold-deep); margin-bottom: 48px; }
   .matriarchs { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; }
   .matriarch { text-align: center; }
-  .matriarch .photo {
-    width: 100%; aspect-ratio: 1; border-radius: 50%; margin-bottom: 18px; position: relative;
-    overflow: hidden;
-    background: linear-gradient(150deg, var(--royal), var(--deep)); border: 3px solid var(--gold);
-    display: flex; align-items: center; justify-content: center; font-family:'Fraunces'; font-weight: 700; font-size: 2rem; color: var(--gold-bright);
-    box-shadow: var(--shadow-cream); transition: transform .3s var(--ease);
+  .matriarch .photo-frame {
+    transition: transform .3s var(--ease);
   }
-  .matriarch .photo img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
-  }
-  .matriarch:hover .photo { transform: translateY(-6px); }
-  /* le drapeau reste hors du cercle (overflow:hidden du .photo) → on le sort dans .photo-wrap */
-  .matriarch .photo-wrap { position: relative; }
-  .matriarch .flag { position: absolute; bottom: 16px; right: 12%; width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; font-size: 1rem; display:flex; align-items:center; justify-content:center; background:#fff; box-shadow: 0 2px 8px rgba(0,0,0,.2); z-index: 2; }
+  .matriarch:hover .photo-frame { transform: translateY(-6px); }
+  .matriarch .flag { position: absolute; bottom: 6px; right: 12%; width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; font-size: 1rem; display:flex; align-items:center; justify-content:center; background:#fff; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
   .matriarch .k { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
   .matriarch h3 { font-family:'Fraunces'; font-weight: 700; font-size: 1.1rem; color: var(--ink); margin-top: 5px; }
   .matriarch .country { color: var(--ink-faint); font-size: 0.86rem; margin-top: 3px; }
@@ -414,12 +396,14 @@
   .mobile-close { position: absolute; top: 24px; right: 24px; background:none; border:none; color: var(--on-deep); cursor:pointer; padding:8px; }
 
   /* ---------- RESPONSIVE ---------- */
+  /* Tablette large : on resserre les sections de contenu lourdes */
   @media (max-width: 1080px) {
     .foot-grid { gap: 32px; }
     .signup-grid { gap: 40px; }
     .host-word { padding: 32px 34px; }
   }
 
+  /* Tablette / grand mobile : bascule menu burger + grilles en 2 ou 1 colonne */
   @media (max-width: 940px) {
     .nav-links { display: none; }
     .nav-toggle { display: block; }
@@ -434,6 +418,7 @@
     .sec-head { margin-bottom: 48px; }
   }
 
+  /* Petite tablette / mobile paysage */
   @media (max-width: 760px) {
     .nav-inner { height: 66px; }
     .hero { padding-top: 96px; }
@@ -445,6 +430,7 @@
     form.reg { padding: 34px 28px; }
   }
 
+  /* Mobile portrait */
   @media (max-width: 600px) {
     .wrap { padding: 0 18px; }
     .band { padding: 72px 0; }
@@ -462,6 +448,7 @@
     .day-foot { margin-top: 22px; }
   }
 
+  /* Petit mobile : grilles à une seule colonne, typo resserrée */
   @media (max-width: 460px) {
     .wrap { padding: 0 15px; }
     .nav-inner { height: 60px; }
@@ -482,6 +469,7 @@
     .contacts a { display: block; margin: 0 0 8px; }
   }
 
+  /* Très petit mobile : countdown compact */
   @media (max-width: 360px) {
     .countdown { gap: 4px; }
     .cd-unit { min-width: 42px; }
@@ -491,13 +479,13 @@
 
   .lang-mobile { display: none; }
   @media (max-width: 940px) { .lang-mobile { display: inline-flex; } }
-
-  .titre{
-    font-size:20px;
-    font-weight:700;
-    color:var(--gold-bright);
-    font-family: 'Fraunces', serif;
-  }
+.titre{
+  
+  font-size:20px;
+  font-weight:700;
+  color:var(--gold-bright);
+  font-family: 'Fraunces', serif;
+}
 </style>
 </head>
 <body>
@@ -624,12 +612,12 @@
     </div>
     <div class="patrons reveal">
       <div class="patron">
-        <div class="photo"><img src="karambiri.jpg" alt="Mamadou P. Karambiri"></div>
+        <div class="photo-frame"><img src="karambiri.jpg" alt="Mamadou P. Karambiri" class="photo"></div>
         <h3>Mamadou P. Karambiri</h3>
         <div class="role" data-i18n="patron_role">Patriarche · Parrain</div>
       </div>
       <div class="patron">
-        <div class="photo"><img src="ernest.jpg" alt="Ernest Oueounou"></div>
+        <div class="photo-frame"><img src="ernest.jpg" alt="Ernest Oueounou" class="photo"></div>
         <h3>Ernest Oueounou</h3>
         <div class="role" data-i18n="patron_role">Patriarche · Parrain</div>
       </div>
@@ -637,7 +625,7 @@
     <p class="patrons-note reveal" data-i18n="patron_note">Pères spirituels de cette génération, les deux patriarches accompagnent et bénissent la conférence de leur couverture. Ils pourront ponctuellement intervenir pour un temps de prière ou un mot de conseil.</p>
 
     <div class="host-word reveal">
-      <div class="photo"><img src="janine.jpg" alt="Apôtre Janine Aho"></div>
+      <div class="photo-frame"><img src="janine.jpg" alt="Apôtre Janine Aho" class="photo photo-janine"></div>
       <div>
         <span class="k" data-i18n="host_k">Mot de l'hôte</span>
         <blockquote data-i18n="host_quote">« À travers les matriarches, Dieu suscite et équipe des femmes leaders dans tous les domaines de la vie. C'est un appel à aller plus haut et plus loin, ensemble. »</blockquote>
@@ -695,37 +683,25 @@
     <p class="label-line reveal serif" data-i18n="matriarchs_label">« Une matriarche = un label »</p>
     <div class="matriarchs reveal">
       <div class="matriarch">
-        <div class="photo-wrap">
-          <div class="photo"><img src="horteense.jpg" alt="Hortense Karambiri"></div>
-          <span class="flag" aria-hidden="true">🇧🇫</span>
-        </div>
+        <div class="photo-frame"><img src="horteense.jpg" alt="Hortense Karambiri" class="photo"><span class="flag" aria-hidden="true">🇧🇫</span></div>
         <span class="k" data-i18n="matriarch_k">Matriarche</span>
         <h3>Hortense Karambiri</h3>
         <div class="country">Burkina Faso</div>
       </div>
       <div class="matriarch">
-        <div class="photo-wrap">
-          <div class="photo"><img src="emikutino.jpg" alt="Emi Kutino"></div>
-          <span class="flag" aria-hidden="true">🇨🇩</span>
-        </div>
+        <div class="photo-frame"><img src="emikutino.jpg" alt="Emi Kutino" class="photo photo-emikutino"><span class="flag" aria-hidden="true">🇨🇩</span></div>
         <span class="k" data-i18n="matriarch_k">Matriarche</span>
         <h3>Emi Kutino</h3>
         <div class="country" data-i18n="country_drc">RD Congo</div>
       </div>
       <div class="matriarch">
-        <div class="photo-wrap">
-          <div class="photo"><img src="funke.jpg" alt="Funke Felix-Adejumo"></div>
-          <span class="flag" aria-hidden="true">🇳🇬</span>
-        </div>
+        <div class="photo-frame"><img src="funke.jpg" alt="Funke Felix-Adejumo" class="photo photo-funke"><span class="flag" aria-hidden="true">🇳🇬</span></div>
         <span class="k" data-i18n="matriarch_k">Matriarche</span>
         <h3>Funke Felix-Adejumo</h3>
         <div class="country">Nigeria</div>
       </div>
       <div class="matriarch">
-        <div class="photo-wrap">
-          <div class="photo"><img src="debora.jpg" alt="Débora Gnepe"></div>
-          <span class="flag" aria-hidden="true">🇨🇮</span>
-        </div>
+        <div class="photo-frame"><img src="debora.jpg" alt="Débora Gnepe" class="photo photo-debora"><span class="flag" aria-hidden="true">🇨🇮</span></div>
         <span class="k" data-i18n="matriarch_k">Matriarche</span>
         <h3>Débora Gnepe</h3>
         <div class="country" data-i18n="country_ci">Côte d'Ivoire</div>
@@ -768,7 +744,7 @@
       <div class="facts-card">
         <div class="fact"><div class="k" data-i18n="info_venue">Lieu</div><div class="v">Palais des Congrès, Cotonou, Bénin</div></div>
         <div class="fact"><div class="k" data-i18n="info_dates">Dates</div><div class="v" data-i18n="info_dates_v">18 – 20 Août 2026</div></div>
-        <div class="fact"><div class="k" data-i18n="info_deadline">Clôture</div><div class="v" data-i18n="info_deadline_v">Vendredi 31 juillet 2026 / places limitées</div></div>
+        <div class="fact"><div class="k" data-i18n="info_deadline">Clôture</div><div class="v" data-i18n="info_deadline_v">Vendredi 31 juillet 2026  places limitées</div></div>
         <div class="fact"><div class="k" data-i18n="info_admission">Participation</div><div class="v free" data-i18n="info_admission_v">Entrée gratuite</div></div>
       </div>
       <div class="donate-card">
@@ -789,13 +765,13 @@
   <div class="wrap">
     <div class="signup-grid">
       <div class="signup-intro reveal">
-        <span class="titre" data-i18n="register_eyebrow">Inscription</span>
+        <span class="titre" data-i18n="register_eyebrow"> <h6 style="color:#D4AF37;">Inscription</h6></span>
         <h2 class="serif" style="font-family:'Fraunces';font-weight:700;font-size:clamp(2rem,4.6vw,3rem);margin:16px 0 18px" data-i18n="register_title">Réservez votre place</h2>
-        <p style="color:var(--on-deep-soft)" data-i18n="register_lead">L'inscription est gratuite et se fait en ligne. Les places au Palais des Congrès sont limitées. Réservez la vôtre dès maintenant.</p>
+        <p style="color:var(--on-deep-soft)" data-i18n="register_lead">L'inscription est gratuite et se fait en ligne. Les places au Palais des Congrès sont limitées.Réservez la vôtre dès maintenant.</p>
         <div class="deadline" data-i18n="register_deadline">Clôture des inscriptions : vendredi 31 juillet 2026</div>
         <div class="contacts">
           <div class="k" data-i18n="contact_k">Contact</div>
-          <a href="tel:+2290166265412">+229 01 66 26 54 12</a>
+          <a href="tel:+22901662654 12">+229 01 66 26 54 12</a>
           <a href="tel:+2290196964698">+229 01 96 96 46 98</a>
           <a href="tel:+2290196363626">+229 01 96 36 36 26</a>
         </div>
@@ -866,7 +842,9 @@
         <a href="#register" data-i18n="foot_free">Entrée gratuite</a>
       </div>
     </div>
-    <div class="orgs"></div>
+    <div class="orgs">
+     
+    </div>
     <p class="copyright">© 2026 Au Sommet des Montagnes. <span data-i18n="rights">Tous droits réservés.</span></p>
   </div>
 </footer>
@@ -919,7 +897,7 @@
       info_admission: "Participation", info_admission_v: "Entrée gratuite",
       donate_title: "Dons & soutien", donate_p: "Pour vos dons et votre soutien à l'événement :",
       register_eyebrow: "Inscription", register_title: "Réservez votre place",
-      register_lead: "L'inscription est gratuite et se fait en ligne. Les places au Palais des Congrès sont limitées. Réservez la vôtre dès maintenant.",
+      register_lead: "L'inscription est gratuite et se fait en ligne. Les places au Palais des Congrès sont limitées.Réservez la vôtre dès maintenant.",
       register_deadline: "Clôture des inscriptions : vendredi 31 juillet 2026",
       contact_k: "Contact",
       form_title: "Formulaire d'inscription", form_sub: "Remplissez les champs ci-dessous. Une confirmation vous parviendra par e-mail.",
@@ -976,7 +954,7 @@
       info_admission: "Admission", info_admission_v: "Free entry",
       donate_title: "Donations & Support", donate_p: "To support this event with a donation:",
       register_eyebrow: "Registration", register_title: "Reserve your seat",
-      register_lead: "Registration is free and done online. Seats at the Palais des Congrès are limited. Reserve yours now.",
+      register_lead: "Registration is free and done online. Seats at the Palais des Congrès are limited.Reserve yours now.",
       register_deadline: "Registration closes Friday, July 31, 2026",
       contact_k: "Contact",
       form_title: "Registration form", form_sub: "Fill in the fields below. A confirmation will be sent to your e-mail.",
@@ -1015,6 +993,7 @@
   document.querySelectorAll(".lang button").forEach(b => {
     b.addEventListener("click", () => setLang(b.dataset.lang));
   });
+  // langue initiale : mémoire > navigateur > fr
   (function initLang(){
     let saved; try { saved = localStorage.getItem("asm_lang"); } catch(e){}
     const nav = (navigator.language || "fr").toLowerCase().startsWith("en") ? "en" : "fr";
@@ -1049,10 +1028,9 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }}), { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-  // ===== form (insertion directe vers Supabase) =====
+  // ===== form =====
   const SUPABASE_URL = "https://hdeysxsvnabqbaodfdkd.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_vQmvnL2-y5rrJmAP4o0FtQ_MlLvVjCl";
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   const MINISTRIES_FR = ["Servante de Dieu", "Femme leader / Entrepreneure", "Responsable d'église", "Étudiante", "Autre"];
   const MINISTRIES_EN = ["Servant of God", "Woman leader / Entrepreneur", "Church leader", "Student", "Other"];
@@ -1081,7 +1059,6 @@
       location: f.querySelector("#ct").value.trim(),
       ministry: f.querySelector("#mn").value,
       lang,
-      website: f.querySelector("#company_url")?.value || "",
       source: "website"
     };
 
@@ -1101,26 +1078,44 @@
     submitBtn.disabled = true;
     submitBtn.textContent = lang === "en" ? "Sending…" : "Envoi…";
 
-    const { error } = await supabase.from("asm_registrations").insert(payload);
+    try {
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+        },
+        body: JSON.stringify(payload)
+      });
 
-    submitBtn.disabled = false;
-    submitBtn.textContent = original;
+      const result = await response.json().catch(() => null);
 
-    if (error) {
-      console.error(error);
-      const isRls = error.message?.includes("row-level security") || error.message?.includes("violates row-level security policy") || error.code === "42501";
-      if (error.code === "23505" || isRls) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = original;
+
+      if (!response.ok) {
+        const message = result?.message || "";
+        const isDuplicate = message.includes("already_registered") || message.includes("duplicate");
         alert(lang === "en"
-          ? (isRls ? "The insertion is blocked by row-level security. Enable the insert policy in Supabase." : "This e-mail is already registered.")
-          : (isRls ? "L’insertion est bloquée par la sécurité en ligne. Activez la policy d’insertion dans Supabase." : "Cette adresse e-mail est déjà inscrite."));
-      } else {
-        alert(lang === "en" ? "An error occurred. Please try again." : "Une erreur est survenue. Veuillez réessayer.");
+          ? (isDuplicate ? "This e-mail is already registered." : "An error occurred. Please try again.")
+          : (isDuplicate ? "Cette adresse e-mail est déjà inscrite." : "Une erreur est survenue. Veuillez réessayer."));
+        return;
       }
-      return;
-    }
 
-    document.getElementById("regFields").style.display = "none";
-    document.getElementById("regSuccess").classList.add("show");
+      if (!result?.ok) {
+        alert(lang === "en" ? "An error occurred. Please try again." : "Une erreur est survenue. Veuillez réessayer.");
+        return;
+      }
+
+      document.getElementById("regFields").style.display = "none";
+      document.getElementById("regSuccess").classList.add("show");
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = original;
+      console.error(err);
+      alert(lang === "en" ? "An error occurred. Please try again." : "Une erreur est survenue. Veuillez réessayer.");
+    }
   });
 </script>
 </body>
