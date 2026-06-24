@@ -834,7 +834,9 @@
   </div>
 </footer>
 
-<script>
+<script type="module">
+  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
   // ===== i18n =====
   const I18N = {
     fr: {
@@ -1011,14 +1013,22 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }}), { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-  // ===== form (branchera l'Edge Function Supabase) =====
+  // ===== form (insertion directe vers Supabase) =====
   const SUPABASE_URL = "https://hdeysxsvnabqbaodfdkd.supabase.co";
-  const REGISTER_FN_URL = SUPABASE_URL + "/functions/v1/register";
-  const SUPABASE_ANON_KEY = "sb_publishable_vQmvnL2-y5rrJmAP4o0FtQ_MlLv...";
+  const SUPABASE_ANON_KEY = "sb_publishable_vQmvnL2-y5rrJmAP4o0FtQ_MlLvVjCl";
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const MINISTRIES_FR = ["Servante de Dieu", "Femme leader / Entrepreneure", "Responsable d'église", "Étudiante", "Autre"];
+  const MINISTRIES_EN = ["Servant of God", "Woman leader / Entrepreneur", "Church leader", "Student", "Other"];
+  const isEmail = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
 
   document.getElementById("regForm").addEventListener("submit", async e => {
     e.preventDefault();
     const f = e.target;
+
+    const honeypot = f.querySelector("#company_url")?.value?.trim();
+    if (honeypot) return;
+
     if (!f.checkValidity()) {
       const x = f.querySelector(":invalid");
       if (x) x.focus();
@@ -1026,59 +1036,55 @@
       return;
     }
 
+    const lang = document.documentElement.lang === "en" ? "en" : "fr";
+    const payload = {
+      last_name: f.querySelector("#fn").value.trim(),
+      first_name: f.querySelector("#gn").value.trim(),
+      email: f.querySelector("#em").value.trim().toLowerCase(),
+      phone: f.querySelector("#ph").value.trim(),
+      location: f.querySelector("#ct").value.trim(),
+      ministry: f.querySelector("#mn").value,
+      lang,
+      website: f.querySelector("#company_url")?.value || "",
+      source: "website"
+    };
+
+    if (!isEmail(payload.email)) {
+      alert(lang === "en" ? "Invalid e-mail address." : "Adresse e-mail invalide.");
+      return;
+    }
+
+    const validMinistries = [...MINISTRIES_FR, ...MINISTRIES_EN];
+    if (!validMinistries.includes(payload.ministry)) {
+      alert(lang === "en" ? "Please choose a status." : "Veuillez choisir un statut.");
+      return;
+    }
+
     const submitBtn = f.querySelector('button[type="submit"]');
     const original = submitBtn.textContent;
     submitBtn.disabled = true;
-    submitBtn.textContent = document.documentElement.lang === "en" ? "Sending…" : "Envoi…";
+    submitBtn.textContent = lang === "en" ? "Sending…" : "Envoi…";
 
-    const payload = {
-      last_name: f.querySelector("#fn").value,
-      first_name: f.querySelector("#gn").value,
-      email: f.querySelector("#em").value,
-      phone: f.querySelector("#ph").value,
-      location: f.querySelector("#ct").value,
-      ministry: f.querySelector("#mn").value,
-      lang: document.documentElement.lang === "en" ? "en" : "fr",
-      website: f.querySelector("#company_url")?.value || ""
-    };
+    const { error } = await supabase.from("asm_registrations").insert(payload);
 
-    try {
-      const res = await fetch(REGISTER_FN_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
-          "apikey": SUPABASE_ANON_KEY
-        },
-        body: JSON.stringify(payload)
-      });
+    submitBtn.disabled = false;
+    submitBtn.textContent = original;
 
-      if (res.ok) {
-        document.getElementById("regFields").style.display = "none";
-        document.getElementById("regSuccess").classList.add("show");
-        return;
-      }
-
-      await res.json().catch(() => null);
-      let msg;
-      if (res.status === 409) {
-        msg = document.documentElement.lang === "en"
-          ? "This e-mail is already registered."
-          : "Cette adresse e-mail est déjà inscrite.";
+    if (error) {
+      console.error(error);
+      const isRls = error.message?.includes("row-level security") || error.message?.includes("violates row-level security policy") || error.code === "42501";
+      if (error.code === "23505" || isRls) {
+        alert(lang === "en"
+          ? (isRls ? "The insertion is blocked by row-level security. Enable the insert policy in Supabase." : "This e-mail is already registered.")
+          : (isRls ? "L’insertion est bloquée par la sécurité en ligne. Activez la policy d’insertion dans Supabase." : "Cette adresse e-mail est déjà inscrite."));
       } else {
-        msg = document.documentElement.lang === "en"
-          ? "An error occurred. Please try again."
-          : "Une erreur est survenue. Veuillez réessayer.";
+        alert(lang === "en" ? "An error occurred. Please try again." : "Une erreur est survenue. Veuillez réessayer.");
       }
-      alert(msg);
-    } catch {
-      alert(document.documentElement.lang === "en"
-        ? "Network error. Please try again."
-        : "Erreur réseau. Veuillez réessayer.");
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = original;
+      return;
     }
+
+    document.getElementById("regFields").style.display = "none";
+    document.getElementById("regSuccess").classList.add("show");
   });
 </script>
 </body>
